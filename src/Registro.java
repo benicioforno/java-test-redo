@@ -8,11 +8,29 @@
  *
  * @author mk
  */
-//TODO: Crie o registro como um Java record. Todo registro tem um numero, local e data
-public record Registro () {
+
+public record Registro (int numero, String local, String data) {
     
-    //TODO: Crie um construtor para o Registro que trate as situacoes de excecao
-    
+        public Registro(int numero, String local, String data){
+        if(numero <= 0){
+            throw new IllegalArgumentException("Registro deve ser um numero maior do que zero");
+        } else{
+            this.numero = numero;
+        }
+        
+        if(local == null || local == ""){
+            throw new IllegalArgumentException("Local nao pode ser nulo ou vazio");
+        }else{
+            this.local = local;
+        }
+
+        if(data == null || data == ""){
+            throw new IllegalArgumentException("Data nao pode ser nula ou vazia");
+        }else{
+            this.data = data;
+        }
+    }
+
     @Override
     public String toString() {
         return "Registro{" + "numero=" + numero + ", local=" + local + ", data=" + data + '}';
