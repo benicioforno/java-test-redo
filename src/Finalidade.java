@@ -9,7 +9,5 @@
  */
 //TODO: Crie a enumeracao para as finalidades dos avioes
 public enum Finalidade {
-    
-   
-    
+    PASSAGEIROS, CARGA, AGRICOLA;
 }
