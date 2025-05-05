@@ -11,14 +11,20 @@ import java.util.Objects;
  * @author mk
  */
 
-public class Veiculo {
-    
-    //TODO: declare os atributos
+public abstract class Veiculo {
+    private Pessoa proprietarioPrincipal;
+    private Registro registro;
+    private String modelo;
+    private String marca;
+    private int quilometragem;
 
-    //TODO: Escreva aqui o construtor
-    
-    //TODO: Crie os metodos necessarios para definir agregacao com Registro e composicao com Proprietario
-
+    public Veiculo(Pessoa proprietarioPrincipal, String modelo, String marca){
+        this.quilometragem = 0;
+        setProprietarioPrincipal(proprietarioPrincipal);
+        setModelo(modelo);
+        setMarca(marca);
+    }
+   
     public final void setProprietarioPrincipal(Pessoa proprietario) {
         if (proprietario == null) throw new IllegalArgumentException("Proprietario nao pode ser nulo");
         this.proprietarioPrincipal = proprietario;
@@ -33,6 +39,9 @@ public class Veiculo {
      */
     public Registro getRegistro() {
         return registro;
+    }
+    public void setRegistro(Registro registro){
+        this.registro = registro;
     }
 
     /**
@@ -75,16 +84,16 @@ public class Veiculo {
     /**
      * @param quilometragem the quilometragem to set
      */
-    //TODO: Defina a visibilidade do metodo setQuilometragem
-    ???? void setQuilometragem(int quilometragem) {
+
+    protected void setQuilometragem(int quilometragem) {
         if (quilometragem <0){
             throw new IllegalArgumentException("A quilometragem não pode ser negativa");
         }
         this.quilometragem = quilometragem;
     }
-    
-    //TODO: Escreva o metodo abstrato mover
-    
+
+    protected abstract String mover();
+
     @Override
     public String toString() {
         return "Veiculo{" + "registro=" + registro + ", modelo=" + modelo + ", marca=" + marca + ", quilometragem=" + quilometragem + ", proprietarioPrincipal=" + proprietarioPrincipal + '}';
